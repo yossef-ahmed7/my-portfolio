@@ -4,7 +4,8 @@ nav {
     left: 50%;
     transform: translateX(-50%);
     width: max-content;
-    max-width: calc(100% - 2rem);
+    max-width: calc(100vw - 2rem);
+    box-sizing: border-box;
     z-index: 100;
     padding: 0.7rem 1.7rem;
     background-color: rgba(0, 0, 0, 0.3);
@@ -54,7 +55,7 @@ nav .nav_container {
     list-style: none;
     padding: 0;
     margin: 0;
-    flex: 1;
+    flex: 0 0 auto;
 }
 
 .navbar_actions {
@@ -124,6 +125,9 @@ nav ul li a:hover .nav_label {
     transform: translateX(0);
 }
 
+[dir="rtl"] .nav_label {
+    transform: translateX(8px);
+}
 
 nav ul li a.active {
     color: var(--color-bg);
@@ -143,7 +147,7 @@ nav ul li a:focus-visible {
 
 
 @media (max-width: 1024px) {
-    .nav_container {
+    nav .nav_container {
         gap: 1rem;
     }
 
@@ -209,17 +213,18 @@ nav ul li a:focus-visible {
 
 @media (max-width: 640px) {
     nav {
-        width: calc(100% - 1rem);
-        max-width: 100%;
-        box-sizing: border-box;
-        padding: 0.5rem;
-        border-radius: 2rem;
+        left: 1rem;
+        right: 1rem;
+        width: auto;
+        max-width: none;
+        transform: none;
     }
+
 
     nav .nav_container {
         width: 100%;
         min-width: 0;
-        gap: 0.25rem;
+        gap: 0.5rem;
         justify-content: space-between;
     }
 
@@ -228,9 +233,10 @@ nav ul li a:focus-visible {
     }
 
     nav ul.nav_links {
-        flex: 1;
+        flex: 0 0 auto;
+        width: auto;
         min-width: 0;
-        justify-content: space-between;
+        justify-content: flex-start;
         gap: 0;
     }
 
@@ -243,6 +249,7 @@ nav ul li a:focus-visible {
         width: 2.4rem;
         height: 2.7rem;
         padding: 0;
+        box-sizing: border-box;
     }
 
     nav ul li a.active {
@@ -267,35 +274,5 @@ nav ul li a:focus-visible {
         width: 2.4rem;
         height: 2.4rem;
         font-size: 1rem;
-    }
-}
-
-@media (max-width: 360px) {
-    nav {
-        padding: 0.2rem;
-    }
-
-    nav .nav_container {
-        gap: 0.1rem;
-    }
-
-    nav ul li a {
-        width: 2rem;
-        height: 2.2rem;
-    }
-
-    .nav_icon {
-        font-size: 1rem;
-    }
-
-    .navbar_actions {
-        gap: 0.1rem;
-    }
-
-    .language_toggle,
-    .theme_toggle {
-        width: 2rem;
-        height: 2rem;
-        font-size: 0.8rem;
     }
 }

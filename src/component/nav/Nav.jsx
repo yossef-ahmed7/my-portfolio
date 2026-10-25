@@ -108,7 +108,6 @@ function Nav({ theme, toggleTheme }) {
             {language === "en" ? "EN" : "AR"}
           </button>
         </div>
-
       </div>
     </nav>
   );
