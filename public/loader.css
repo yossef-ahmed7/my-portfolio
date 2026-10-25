@@ -1,0 +1,125 @@
+ :root {
+     --color-bg: #1f1f38;
+     --color-bg-variant: #2c2c6c;
+     --color-primary: #4db5ff;
+     --color-primary-variant: rgba(77, 181, 255, 0.4);
+     --color-white: #fff;
+     --color-light: rgba(255, 255, 255, 0.6);
+     --transition: all 0.4s ease;
+
+     body.light-theme {
+         --color-bg: #f8f9fc;
+         --color-bg-variant: #e9edf5;
+         --color-primary: #0878c9;
+         --color-primary-variant: rgba(8, 120, 201, 0.15);
+         --color-white: #1f1f38;
+         --color-light: #55566b;
+     }
+ }
+
+ #initial-loader {
+     position: fixed;
+     inset: 0;
+     z-index: 10000;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-image: url("../src/assets/bg-texture.png~");
+     background-color: var(--color-bg);
+     color: var(--color-white);
+     opacity: 1;
+     visibility: visible;
+     transition: opacity 0.5s ease, visibility 0.5s ease;
+ }
+
+ .initial-loader-content {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 1rem;
+     font-family: Arial, sans-serif;
+ }
+
+ .initial-loader-content h2 {
+     font-size: 1.5rem;
+     font-weight: 600;
+ }
+
+ .initial-loader-content p {
+     color: rgba(255, 255, 255, 0.6);
+     font-size: 0.9rem;
+ }
+
+ .initial-loader-dots {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 8px;
+     height: 40px;
+ }
+
+ .initial-loader-dots span {
+     width: 10px;
+     height: 10px;
+     border-radius: 50%;
+     background-color: #4db5ff;
+     animation: initialDotsWave 0.8s ease-in-out infinite;
+ }
+
+ .initial-loader-dots span:nth-child(2) {
+     animation-delay: 0.15s;
+ }
+
+ .initial-loader-dots span:nth-child(3) {
+     animation-delay: 0.3s;
+ }
+
+ @keyframes initialDotsWave {
+
+     0%,
+     60%,
+     100% {
+         transform: translateY(0);
+         opacity: 0.5;
+     }
+
+     30% {
+         transform: translateY(-12px);
+         opacity: 1;
+     }
+ }
+
+ #initial-loader.initial-loader-hidden {
+     opacity: 0;
+     visibility: hidden;
+     pointer-events: none;
+ }
+
+ @media (prefers-reduced-motion: reduce) {
+     .initial-loader-dots span {
+         animation: none;
+         opacity: 1;
+     }
+
+     #initial-loader {
+         transition: none;
+     }
+ }
+
+ /* Light Mode */
+ html.light-theme #initial-loader {
+     background-color: #f8f9fc;
+     color: #1f1f38;
+ }
+
+ html.light-theme .initial-loader-content h2 {
+     color: #1f1f38;
+ }
+
+ html.light-theme .initial-loader-content p {
+     color: #55566b;
+ }
+
+ html.light-theme .initial-loader-dots span {
+     background-color: #0878c9;
+ }

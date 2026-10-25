@@ -1,0 +1,121 @@
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg);
+    background-image: url("../../assets/bg-texture.png");
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+.loader_hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    animation: loaderFadeIn 0.5s ease;
+}
+
+.loader_dots {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+height: 40px;
+}
+
+.loader_dots span {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background-color: var(--color-primary);
+animation: dotsWave 0.8s ease-in-out infinite;
+}
+
+.loader_dots span:nth-child(1) {
+animation-delay: 0s;
+}
+
+.loader_dots span:nth-child(2) {
+animation-delay: 0.15s;
+}
+
+.loader_dots span:nth-child(3) {
+animation-delay: 0.3s;
+}
+
+@keyframes dotsWave {
+0%, 60%, 100% {
+transform: translateY(0);
+opacity: 0.5;
+}
+
+30% {
+    transform: translateY(-12px);
+    opacity: 1;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.loader_dots span {
+animation: none;
+opacity: 1;
+}
+}
+
+
+.loader_content h2 {
+    color: var(--color-white);
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.loader_content p {
+    color: var(--color-light);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loaderFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .loader,
+    .loader_content {
+        animation: none;
+        transition: none;
+    }
+
+    .loader_spinner {
+        animation-duration: 2s;
+    }
+}
