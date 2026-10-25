@@ -9,9 +9,8 @@ function Loader() {
         let finishTimer;
         let removeTimer;
         let finished = false;
-
         const startTime = Date.now();
-        const minimumDuration = 3000;
+        const minimumDuration = 1000;
 
         const finishLoading = () => {
             if (finished) return;
